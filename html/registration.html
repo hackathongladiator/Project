@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+
+	<head>
+		<title>Registration</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script type="text/javascript">
+                	function Captcha(){
+				var alpha = new Array('A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z');
+                     		var i;
+                     		for (i=0;i<6;i++){
+                       			var a = alpha[Math.floor(Math.random() * alpha.length)];
+                       			var b = alpha[Math.floor(Math.random() * alpha.length)];
+                       			var c = alpha[Math.floor(Math.random() * alpha.length)];
+                       			var d = alpha[Math.floor(Math.random() * alpha.length)];
+                     			var e = alpha[Math.floor(Math.random() * alpha.length)];
+                   			var f = alpha[Math.floor(Math.random() * alpha.length)];
+                       			var g = alpha[Math.floor(Math.random() * alpha.length)];
+                      			}
+                    		var code = a + ' ' + b + ' ' + ' ' + c + ' ' + d + ' ' + e + ' '+ f + ' ' + g;
+                    		document.getElementById("mainCaptcha").value = code
+                  		}
+                  	function ValidCaptcha(){
+                      		var string1 = removeSpaces(document.getElementById('mainCaptcha').value);
+                      		var string2 = removeSpaces(document.getElementById('txtInput').value);
+                      		if (string1 == string2){
+			  					validate();
+								}
+                      		else{        
+                        		alert("check captcha");
+                      		}
+                  	}
+                  	function removeSpaces(string){
+                    	return string.split(' ').join('');
+                  	}
+			function validate()
+			{
+  				var namev = document.getElementById('name').value;
+  				var nameRGEX = /.{6,}/;
+				var emailv = document.getElementById('email').value;
+				var emailRGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; 
+				var passwordv = document.getElementById('password').value;
+				var passwordRGEX = /.{6,}/;
+				var mobv = document.getElementById('mob').value;
+				var mobRGEX = /.{6,}/;
+				var dob = document.getElementById('dob').required;  
+
+
+
+ 			 	if(nameRGEX.test(namev)===false)
+				{
+					alert("Name validation"); 
+				}	
+				else
+				{
+					if(emailRGEX.test(emailv)===false)
+					{
+						alert("Email validation"); 
+					}
+					else
+					{
+						if(passwordRGEX.test(passwordv)===false)
+						{
+							alert("Password validation");
+						}
+						else
+						{
+							if(mobRGEX.test(mobv)===false)
+							{
+								alert("Mobile number should be 10 characters only");
+							}
+							else
+							{
+								window.location = "dummy.html";
+							}
+						}
+					}
+				}
+
+				
+			}
+             </script>    
+        </head>
+	<body onload="Captcha();">
+
+
+		<form action="#" method="get" class="container">
+
+		<div id = "form1" style="font-family: Arial;font-size: 15px;"><p style="font-size:20px; font-weight:500;">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspREGISTRATION</p>
+
+		<STRONG>Full Name:</strong> <input type="text" class="textfields" placeholder="Firstname Lastname" id="name"><br>
+
+		<strong>Email:</strong> <input type="text"class="textfields" placeholder="xyz@abc.com" id="email"><br>
+
+		<strong>Password:</strong> <input type="password" class="textfields" placeholder="Password" id="password" title="Six or more characters"><br>
+
+		<strong>Mobile:</strong> <input type="text"class="textfields" placeholder="91xxxxxxxx" id="mob"><br>
+
+		<strong>City:</strong> <select required class="textfields">
+			<!-- <option value="" disabled selected>Select City</option> -->
+  			<option value="Mumbai">Mumbai</option>
+  			<option value="Pune">Pune</option>
+  			<option value="Bangalore">Bangalore</option>
+  			<option value="Chennai">Chennai</option>
+		</select>
+
+		<strong>Date of birth:</strong> <input type="date" class="textfields" id="dob"><br>
+
+
+		<strong>Captcha</strong><br><input type="text" id="mainCaptcha" class="textfields1" readonly="readonly"/>
+                <input type="button" id="refresh" value="Refresh" onclick="Captcha();" class="button1" />
+            	<input type="text" id="txtInput" class="textfields" placeholder="Enter captcha" autocomplete="off"/> 
+
+		
+
+            	<input id="Button1" type="button" value="Register" onclick="ValidCaptcha();" class="button" />
+		</form>
+	</body>
+</html>
+		
