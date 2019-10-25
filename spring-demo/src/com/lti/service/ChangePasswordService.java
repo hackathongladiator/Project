@@ -12,9 +12,9 @@ public class ChangePasswordService {
 	@Autowired
 	private ChangePasswordDao changePasswordDao;
 	
-	public void changepassword(String email, String city, String password)
+	public void changepassword(String email, String city, String password, String dob)
 	{
-		changePasswordDao.changepassword(email,city,password);
+		changePasswordDao.changepassword(email,city,password, dob);
 	}
 	
 	

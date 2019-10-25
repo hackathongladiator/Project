@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lti.dao.ChangePasswordDao;
+import com.lti.entity.Admin;
 import com.lti.entity.Student;
+import com.lti.service.AdminService;
 import com.lti.service.ChangePasswordService;
 import com.lti.service.StudentService;
 import com.mail.Sendmail;
@@ -22,6 +24,8 @@ public class StudentController {
 	private StudentService studentService;
 	@Resource
 	private ChangePasswordService changePasswordService;
+	@Resource
+	private AdminService adminService;
 	
 	@RequestMapping(path = "/registration.lti")
 	//public String register(HttpServletRequest request) {
@@ -55,9 +59,20 @@ public class StudentController {
 	
 	
 	@RequestMapping(path = "/changepwd.lti")
-	public String change(@RequestParam("email") String email, @RequestParam("city") String city, @RequestParam("password") String password) 
+	public String change(@RequestParam("email") String email, @RequestParam("city") String city, @RequestParam("password") String password, @RequestParam("dob") String dob) 
 	{
-		changePasswordService.changepassword(email,city,password);
+		changePasswordService.changepassword(email,city,password, dob);
 		return "success.jsp";
+	}
+	
+	
+	@RequestMapping(path = "/admin.lti")
+	//public String register(HttpServletRequest request) {
+	//public String register(@RequestParam("name") String name, @RequestParam("email") String email, ...) {
+	public String adminlogin(@RequestParam("email") String email, @RequestParam("password") String password, Map model) {
+		Admin admin = adminService.get(email, password);
+		model.put("admin", admin);
+		//System.out.println(student);
+		return "admin.jsp";
 	}
 }

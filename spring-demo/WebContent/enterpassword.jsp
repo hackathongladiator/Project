@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -35,7 +35,7 @@
 				<td>Enter registered mail</td>
 				<td>:</td>
 
-				<td><input type="text" class="textfields" name="email"></td>
+				<td><input type="email" class="textfields" name="email"></td>
 			</tr>
 			<tr>
 				<td><center>Security question</center></td></tr>
@@ -44,18 +44,23 @@
 
 				<td><input type="text" class="textfields" name="city"></td>
 			</tr>
+			<tr><td>Your date of birth</td>
+				<td>:</td>
+
+				<td><input type="date" class="textfields" name="dob"></td>
+			</tr>
 			<tr>
 				<td>New Password</td>
 				<td>:</td>
 
-				<td><input type="text" class="textfields" id="password"></td>
+				<td><input type="password" class="textfields" id="password" minlength="6" required></td>
 			</tr>
 
 			<tr>
 				<td>Confirm Password</td>
 				<td>:</td>
 
-				<td><input type="text" class="textfields" name="password" id="confirm" onchange='Validate();'></td>
+				<td><input type="password" class="textfields" name="password" id="confirm" minlength="6" onchange='Validate();' required></td>
 			</tr>
 			<tr>
 				<td colspan=4><br></td>

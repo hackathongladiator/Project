@@ -19,16 +19,17 @@ public class ChangePasswordDao {
 	private EntityManager entityManager;
 	
 	@Transactional
-		public void changepassword(String email, String city,String password)
+		public void changepassword(String email, String city,String password, String dob)
 		{
 			//System.out.println("in changepwd dao serv" +password);
 			//String email="harshv";
 			//Student student = new Student();
-			String ql = "UPDATE Student s SET s.password=:pwd WHERE s.email=:em AND s.city=:cty";
+			String ql = "UPDATE Student s SET s.password=:pwd WHERE s.email=:em AND s.city=:cty AND s.dob=:dob";
 			Query q = entityManager.createQuery(ql);
 			q.setParameter("pwd", password);
 			q.setParameter("em", email);
 			q.setParameter("cty", city);
+			q.setParameter("dob", dob);
 			q.executeUpdate();
 			System.out.println("Password changed");
 		}
